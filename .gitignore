@@ -1,6 +1,5 @@
 node_modules
 private
-lib
 .env
 *.log
 test*
