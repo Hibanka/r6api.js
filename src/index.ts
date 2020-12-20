@@ -1,7 +1,8 @@
 import {
   setTokenFileLocation as _setTokenFileLocation,
   setCredentials as _setCredentials,
-  getToken as _getToken
+  getToken as _getToken,
+  parseToken as _parseToken
 } from './auth';
 import _findByUsername from './methods/findByUsername';
 import _findById from './methods/findById';
@@ -69,6 +70,7 @@ export default class R6API {
   getNewsById = _getNewsById
 
   getToken = _getToken
+  parseToken = _parseToken
   setCredentials = _setCredentials
   setTokenFileLocation = _setTokenFileLocation
 

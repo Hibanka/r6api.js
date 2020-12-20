@@ -18,6 +18,12 @@ const tokenFileName = 'r6api-token.json';
 const TEN_MIN_IN_MS = 10 * 60 * 1000;
 let tokenFile = join(tmpdir(), tokenFileName);
 
+export const parseToken = async () => {
+  return await fs.readFile(tokenFile, 'utf8')
+    .then((auth) => JSON.parse(auth))
+    .catch(() => '');
+};
+
 const getExpiration = (auth: IUbiAuth) =>
   +new Date(auth.expiration) - +new Date() - TEN_MIN_IN_MS;
 

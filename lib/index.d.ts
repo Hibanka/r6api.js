@@ -70,7 +70,7 @@ export default class R6API {
         maintenance: boolean | null;
         impactedFeatures: string[];
     }[]>;
-    custom: <T>(url: string, params?: any) => Promise<T>;
+    custom: <T>(url: string, params?: Partial<import("node-fetch").RequestInit> | undefined) => Promise<T>;
     getNews: (options?: import("./methods/getNews").IOptions | undefined) => Promise<{
         total: number;
         limit: number;
@@ -130,6 +130,7 @@ export default class R6API {
         raw?: import("./methods/getNewsById").IApiResponse;
     }>;
     getToken: () => Promise<string>;
+    parseToken: () => Promise<any>;
     setCredentials: (email: string, password: string) => void;
     setTokenFileLocation: (dir: string) => void;
 }
