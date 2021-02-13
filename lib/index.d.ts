@@ -1,3 +1,4 @@
+import { IOptions as IFindByIdOptions } from './methods/findById';
 import { IOptions as IGetRanksOptions } from './methods/getRanks';
 import { IOptions as IGetStatsOptions } from './methods/getStats';
 import { UUID, Platform, PlatformAll, PlatformAllExtended } from './typings';
@@ -15,7 +16,7 @@ export default class R6API {
         id: string;
         userId: string;
         idOnPlatform: string;
-        platform: "uplay" | "psn" | "xbl" | "steam";
+        platform: "uplay" | "psn" | "xbl" | "steam" | "epic" | "amazon";
         username: string;
         avatar: {
             146: string;
@@ -23,7 +24,7 @@ export default class R6API {
             500: string;
         };
     }[]>;
-    findById: (platform: PlatformAllExtended, query: QueryUUID | QueryString) => Promise<{
+    findById: (platform: PlatformAllExtended, query: QueryUUID | QueryString, options?: IFindByIdOptions | undefined) => Promise<{
         id: string;
         userId: string;
         idOnPlatform: string;
@@ -70,7 +71,21 @@ export default class R6API {
         maintenance: boolean | null;
         impactedFeatures: string[];
     }[]>;
-    custom: <T>(url: string, params?: Partial<import("node-fetch").RequestInit> | undefined) => Promise<T>;
+    validateUsername: (username: string) => Promise<{
+        valid: boolean;
+        validationReports: {
+            message: string;
+            categories: string[] | null;
+            severity: string | null;
+            locale: string | null;
+            errorCode: number;
+            suggestions: string[] | null;
+        }[];
+    } | {
+        valid: boolean;
+        validationReports?: undefined;
+    }>;
+    custom: <T>(url: string, params?: any) => Promise<T>;
     getNews: (options?: import("./methods/getNews").IOptions | undefined) => Promise<{
         total: number;
         limit: number;
@@ -129,8 +144,8 @@ export default class R6API {
         tags: string;
         raw?: import("./methods/getNewsById").IApiResponse;
     }>;
+    getAuth: () => Promise<import("./auth").IUbiAuth>;
     getToken: () => Promise<string>;
-    parseToken: () => Promise<any>;
     setCredentials: (email: string, password: string) => void;
     setTokenFileLocation: (dir: string) => void;
 }

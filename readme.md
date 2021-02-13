@@ -94,7 +94,7 @@ exports.default = async () => {
 
 <!-- START_SECTION:EXAMPLE_OUTPUT -->
 ```
-Daniel.Nt has played 5170 matches.
+Daniel.Nt has played 5205 matches.
 ```
 <!-- END_SECTION:EXAMPLE_OUTPUT -->
 
@@ -111,6 +111,7 @@ Daniel.Nt has played 5170 matches.
 * [getRanks](#getRanks)
 * [getStats](#getStats)
 * [getStatus](#getStatus)
+* [validateUsername](#validateUsername)
 * [getNews](#getNews)
 * [getNewsById](#getNewsById)
 * [custom](#custom)
@@ -120,7 +121,7 @@ Daniel.Nt has played 5170 matches.
 | Param       | Type                 | Description                                                           |
 | ----------- | -------------------- | --------------------------------------------------------------------- |
 | platform    | `string`             | Either `uplay` (pc), `xbl` (Xbox Live) or `psn` (PlayStation Network) |
-| platformAll | `string`             | `platform` or `steam`                                                 |
+| platformAll | `string`             | `platform`, `steam`, `epic` or `amazon`                               |
 | username/s  | `string \| string[]` |                                                                       |
 | id/s        | `string \| string[]` |                                                                       |
 
@@ -186,9 +187,26 @@ Find player by their id.
 
 Ids limit: `50`
 
-(platformAll | 'all', id/s) => `Promise<Array>`
+(platformAll | 'all', id/s, options?) => `Promise<Array>`
 
-> **Note:** To search by `userId` set `platform` to `'all'`
+#### Options
+
+<!-- START_SECTION:FINDBYID_OPTIONS -->
+
+| Param    | Type      | Required | Default | Description                     |
+| -------- | --------- | -------- | ------- | ------------------------------- |
+| isUserId | `boolean` | false    | `false` | Whether `id` is `userId` or not |
+
+<!-- END_SECTION:FINDBYID_OPTIONS -->
+
+```js
+// search by profileId (id)
+await r6api.findById('all', '91477729-b5ac-463c-9618-03ca154764f5');
+// search by userId
+await r6api.findById('all', '1baf5bf8-90cd-4ead-8b90-9a11cb2b8adf', { isUserId: true });
+// search by idOnPlatform
+await r6api.findById('xbl', '2535406338711362');
+```
 
 ```js
 await r6api.findById('uplay', '0b95544b-0228-49a7-b338-6d15cfbc3d6a');
@@ -364,43 +382,43 @@ await r6api.getRanks('uplay', '0b95544b-0228-49a7-b338-6d15cfbc3d6a', { regions:
         name: 'Neon Dawn',
         color: '#D14007',
         image: 'https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/3vRTyOgSmwcUVxiOk60p3w/e2f41521df1f67704dae051d147a32cc/r6s-seasons-y5s4.jpg',
-        releaseDate: new Date('2020-12-01T00:00:00.000Z'),
+        releaseDate: '2020-12-01T00:00:00.000Z',
         regions: {
           emea: {
             id: 'emea',
             name: 'Europe, Middle East and Africa',
-            skillMean: 30.8867056323,
-            skillStdev: 7.6002159074,
+            skillMean: 31.0012849098,
+            skillStdev: 6.2625554853,
             current: {
-              id: 0,
-              name: 'Unranked',
-              mmr: 3089,
-              icon: 'https://github.com/danielwerg/r6api.js/raw/typescript/assets/ranks/v3/Unranked.png'
+              id: 18,
+              name: 'Gold 1',
+              mmr: 3100,
+              icon: 'https://github.com/danielwerg/r6api.js/raw/typescript/assets/ranks/v3/Gold%201.png'
             },
             max: {
-              id: 0,
-              name: 'Unranked',
-              mmr: 0,
-              icon: 'https://github.com/danielwerg/r6api.js/raw/typescript/assets/ranks/v3/Unranked.png'
+              id: 19,
+              name: 'Platinum 3',
+              mmr: 3396,
+              icon: 'https://github.com/danielwerg/r6api.js/raw/typescript/assets/ranks/v3.1/Platinum%203.png'
             },
             lastMatch: {
-              result: 'unknown',
-              mmrChange: 0,
-              skillMeanChange: 0,
-              skillStdevChange: 0
+              result: 'loss',
+              mmrChange: -65,
+              skillMeanChange: -0.6529273971,
+              skillStdevChange: -0.0395949962
             },
-            previousMmr: 0,
-            nextMmr: 0,
+            previousMmr: 3000,
+            nextMmr: 3200,
             topRankPosition: 0,
-            kills: 0,
-            deaths: 0,
-            kd: 0,
-            wins: 0,
-            losses: 0,
-            winRate: '0.00%',
-            matches: 0,
+            kills: 123,
+            deaths: 114,
+            kd: 1.08,
+            wins: 12,
+            losses: 13,
+            winRate: '48.00%',
+            matches: 25,
             abandons: 0,
-            updateTime: '1970-01-01T00:00:00+00:00'
+            updateTime: '2020-12-28T16:30:07.288000+00:00'
           }
         }
       }
@@ -517,6 +535,17 @@ await r6api.getStatus();
 ```js
 [
   {
+    appId: '8956241d-236d-4dbd-9e1e-bf6ed133773a',
+    name: 'Rainbow Six Siege - China - PC - LIVE',
+    spaceId: 'f4a93aa0-e9a9-4b2a-918b-6995a82b8e9b',
+    mdm: '23702',
+    category: 'Instance',
+    platform: 'PC',
+    status: 'Online',
+    maintenance: null,
+    impactedFeatures: []
+  },
+  {
     appId: 'e3d5ea9e-50bd-43b7-88bf-39794f4e3d40',
     name: 'Rainbow Six Siege - PC - LIVE',
     spaceId: '5172a557-50b5-4665-b7db-e3f2e8c5041d',
@@ -579,6 +608,44 @@ await r6api.getStatus();
 
 ---
 
+### validateUsername
+
+Validate username.
+
+(username) => `Promise<Object>`
+
+```js
+await r6api.validateUsername('gamerflick360');
+```
+
+<!-- START_SECTION:VALIDATEUSERNAME_OUTPUT -->
+<details>
+<summary>Output</summary>
+
+```js
+{
+  valid: false,
+  validationReports: [
+    {
+      message: '\'flick\' matches \'flick\'',
+      categories: [
+        'global-username',
+        'vulgarity'
+      ],
+      severity: 'high',
+      locale: 'en-US',
+      errorCode: 1013,
+      suggestions: null
+    }
+  ]
+}
+```
+
+</details>
+<!-- END_SECTION:VALIDATEUSERNAME_OUTPUT -->
+
+---
+
 ### getNews
 
 Get Rainbow Six: Siege News.
@@ -612,7 +679,7 @@ await r6api.getNews({ limit: 1 });
 
 ```js
 {
-  total: 1099,
+  total: 1105,
   limit: 1,
   categories: 'all',
   media: 'all',
@@ -622,27 +689,28 @@ await r6api.getNews({ limit: 1 });
   tags: 'BR-rainbow-six GA-siege',
   items: [
     {
-      id: '21R6wWgCuUNonUFRRnCMKv',
-      title: 'UP TO 67% OFF RAINBOW SIX SIEGE FOR WINTER SALE!',
-      abstract: 'Check out our coolest deals for the season',
+      id: '4CpkSOfyxgYhc5a4SbBTx',
+      title: 'Dev Blog: Update on Anti-Cheat in Rainbow Six Siege',
+      abstract: 'Learn about everything we\'ve done regarding anti-cheat since June',
       thumbnail: {
-        url: 'https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/79q5K4MY2GNxCevcayygWe/77ba20117908136fcf326a608f7897cf/R6-news-winter-sale2020-brandspec-r6s-latam_960x540_en.jpg',
-        description: 'Ubisoft Store Rainbow Six Siege Winter Sale Thumbnail Image'
+        url: 'https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/6b0uFyrSfDjijSN3C1IAep/8ce1b0eae3e13410dff27e8d6ab797ca/DEVBLOGAntiCheat.jpg',
+        description: null
       },
-      content: 'Prepare to be snowed in by a blizzard of cool deals during our Winter Sale and save up to 67% off Rainbow Six Siege!\n\nTeam up with your friends and engage in intense 5v5 combat with Rainbow Six Siege at up to 67% off. You can also save on the Ultimate Edition and unlock the latest operators.\n\nThe Ultimate Edition includes:\n- Year 1-4 Passes\n- Year 5 Pass which includes VIP member perks, 6 new Operators and customization content!\n\nCheck out our Winter Sale today to shop amazing discounts on Rainbow Six Siege!\n\n[SHOP NOW](https://store.ubi.com/us/tom-clancys-rainbow-six-siege/56c494ad88a7e300458b4d5a.html?lang=en_US)\n\n*Valid on select titles. Certain conditions apply. Offer ends January 7, 2021.*',
+      content: '## Intro\n\nIt’s been about half a year since our [last dev blog](https://www.ubisoft.com/en-ca/game/rainbow-six/siege/news-updates/71mLMFOOVefAO9qlHMLf3O/dev-blog-rainbow-six-sieges-anticheat-war) on the Rainbow Six Siege war against cheats. For the last six months, the team has continued the fight and we would like to share with you a bit about what’s been happening behind the scenes. While we would love to be fully transparent, doing so could hinder our efforts as it could aid in the creation of new cheats. \n\nMost of our changes will be made on the backend, so you may not see them. To summarize our current status, we are actively reinforcing cheat detection by adding to existing security measures and lessening the overall ability to cheat in Rainbow Six Siege.  \n\n### Glossary \n\nThroughout the blog we’ll reference a few different groups of exploiters:\n\n- __Cheaters:__ Players using a 3rd party application, script, or macro to obtain an unfair advantage in-game or in a manner that violates the Terms of Service for Rainbow Six Siege. \n- __Cheat Developers:__ Those developing cheat applications which they then use, sell, or give to cheaters. \n- __Hackers:__ For the context of this article, these are malicious individuals/groups who are taking over accounts that are not theirs and re-selling accounts they do not own. \n\n### The Siege Team’s Approach Towards Cheating\n\n![[R6] DevBlog: Anti-Cheat Approach to Cheating](//staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/56ljHkq1ZS1qVwpkorMeOt/a35be6a0da53b5c8dccd99d4aed25b90/R6_3PillarStrategy.jpg)\n\nIn our never-ending cat and mouse game with cheaters and cheat developers, we continue to focus our efforts on 3 core points: \n\n- __Detection Improvement__ \n- __Increased Barriers__ to prevent cheaters and novel cheats \n- __Reduction of Impact__ of cheats in-game 	\n\n### 2020 in Numbers\n\n![[R6] BanCharts2021 Total ](//staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/20I0DHoeINP5Ow8Uy97ETM/d1ec88b30e58cdf23560a5331734c177/R6_BanCharts2021_Total__1_.png)\n\nBy the end of 2020, we confirmed we exceeded our previous annual ban number record by 44.73%. Improved detection, detailed reporting, and data sharing with BattlEye were big factors in this ban increase. With a continually growing population and the increased availability of cheats, new cheats and cheaters regularly keep us on our toes. \n\nIn August, we started issuing a new type of cheating sanction based on player data—something we will go into more detail on below. We used this new data detection model to ban over 4500 players between August and December. Adding this to our cheating sanctions brings us to a total of 52,69% increase in cheating bans.\n\n![[R6] Bans Graph Updated](//staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/sIAybX30CANLtRwGQNMgE/763d5e499b5d8e34462da6fc83cd28c2/R6_BanCharts2021_Data_V3.png)\n\n## A Look Back at 2020 and Where We Are Heading \n\nThe [June Dev Blog](https://www.ubisoft.com/en-ca/game/rainbow-six/siege/news-updates/71mLMFOOVefAO9qlHMLf3O/dev-blog-rainbow-six-sieges-anticheat-war) described three important topics for 2020: Detection, Blockers, and Vulnerabilities. These continue to be our focus and we have some updates to report. \n\n### 1. IMPROVED CHEAT DETECTION \n\nCheat detection will always be a work in progress, as well as a ‘’hunting’’ process. As cheating is ever-evolving thanks to changing behaviors, the continued bypassing of systems, and more, it will always be impossible to detect 100% of cheaters.\n\nThat’s why we are building new cheat detections based on statistics to uncover our most disruptive cheat users. \n\n### 1.1. USING DATA-BASED DETECTION MODELS FOR EARLY DETECTION AND FLAGGING CHEATS \n\nBans based on player statistics are still new to Rainbow Six Siege. One of the major goals of data-based cheat detection is to sanction cheaters faster. We are happy with the accuracy of our first model, but we are still operating the ban waves manually. This is causing the process to be slower than we would like. Automation for this first model is planned for the beginning of Year 6.    \n\nNew detection models will always launch manually. We start by identifying data that will make our detection model relevant. Next, we launch it on the backend and make sure we are comfortable with the results. The first ban waves are done by hand, allowing us to review each impacted player. This helps us ensure the detections are identifying concrete proof of cheating. We will continue to develop new models that give us better visibility on what is happening live in order to expedite the identification of cheaters and sanctioning them. \n\n### 1.2. IMPROVING BATTLEYE IN SIEGE\n\nFor the last six months, we have been working with BattlEye to improve cheat detections in Siege.  We will continue to ensure that our partnership with BattlEye has a positive impact on the Rainbow Six Siege community. \n\n### 2. INCREASED BARRIERS TO ENTRY AND CHEAT PREVENTION \nCheat detection is only one piece of the anti-cheat puzzle in Siege. We are also working to increase barriers to entry for both cheat developers and their users. Our goal is to cancel any benefit that could be gained from this practice by making it costly for illegitimate players.\n\n### 2.1. MAKING LIFE DIFFICULT FOR CHEATERS  \n\nIn our quest to make cheaters\' lives as difficult as possible, we included APAC regions in the [2-Step Verification Ranked Lock](https://www.ubisoft.com/en-us/game/rainbow-six/siege/news-updates/5yLMh8r7wyfP4X2hL6twwv/2-step-verification-ranked-lock-update-for-pc). This not only deters cheating, but it helps secure a wider array of accounts from being hacked. Increasing the overall security of accounts is an effective way to help fight instances of account stealing or selling, and makes it harder for Cheaters, Hackers, and Cheat Developers alike.  \n\nAnother tool in the arsenal of cheaters and cheat developers is the creation of burner accounts. To combat this, we have linked BattlEye bans with Steam Vac bans, which prevent banned players from receiving game refunds. \n\nIn the upcoming months, we’ll also be keeping a closer eye on leaderboards. We are aware that cheaters are appearing in the highest rankings and will dedicate efforts to manually cleaning the leaderboards periodically. \n\n### 2.2. MAKING LIFE DIFFICULT FOR CHEAT DEVELOPERS \n\nWhile we can’t offer specifics on this topic, please know we are working to make it harder for cheat developers to analyze and modify our game. With every update we’ve launched for the past few seasons, we have continued to further secure code, making it more difficult for cheat features to keep up.\n\nCheat Developers may only be one part of the equation, but they are the source of the problem. We will continue securing our code and eliminating vulnerabilities in order to make the upkeep of cheats more costly and time-consuming.\n\n### 3. REDUCTION OF VULNERABILITIES, CHEAT OPPORTUNITIES AND IMPACT OF CHEATS \n\nWe are continuing to learn a great deal from our battle against cheating as we fight on multiple fronts, from live issues and fires, to planning the future of Siege’s anti-cheat responses, through to making sure we maintain visibility on our vulnerabilities. \n\n### 3.1. VULNERABILITY ASSESSMENT\n\nCheat developers take advantage of vulnerabilities to create their cheats. For this reason, we assess our vulnerabilities every season to not only detect current vulnerabilities, but also to predict what new loopholes could be found in the future. We keep the Ubisoft game security team close and use their knowledge to plan our initiatives and understand past and present errors. \n\n### 3.2. VULNERABILITY FIXES \n\nIn addition to using software to discover potential risks, we actively keep an eye on social media and work closely with the community team and customer support to concentrate our efforts on issues that matter to our players.  As soon as we discover vulnerabilities, we get to work on fixing them. In some instances, there are no simple solutions, so we complement prevention with detection. \n\n## What is Next? \n\nWe have big plans on the horizon for our team and for the game, and have no intention of slowing down. While we can’t go into full detail at this time, we hope this Dev Blog has helped you understand some of the work we do behind the scenes. This work is rarely user-facing and can be overthrown by new cheat iterations, but we’ll keep pushing to improve on all fronts. \n\nIn the future, the anti-cheat team plans to remain transparent by publishing Dev Blogs when we have notable updates to share.\n\n## Conclusion\n\nFor every wall reinforcement that we deploy, Cheat Developers are trying to breach in another room. But it far from deters our will to rid the game of as many opportunists and cheaters as we can. We are dedicated to making Siege secure and fair for everyone. We look forward to sharing exciting new releases in future Dev Blogs. Until then, keep reporting cheaters in-game and stay safe out there. \n',
       description: undefined,
       categories: [
-        'rainbow-six',
         'rainbow-six-siege',
-        'community',
-        'news'
+        'rainbow-six',
+        'community'
       ],
       tag: 'BR-rainbow-six GA-siege',
-      placement: null,
+      placement: [
+        'featured-news-article'
+      ],
       type: 'news',
-      readTime: '1',
-      url: 'https://www.ubisoft.com/en-us/game/rainbow-six/siege/news-updates/21R6wWgCuUNonUFRRnCMKv/up-to-67-off-rainbow-six-siege-for-winter-sale',
-      date: '2020-12-17T18:00:00.000Z'
+      readTime: '8',
+      url: 'https://www.ubisoft.com/en-us/game/rainbow-six/siege/news-updates/4CpkSOfyxgYhc5a4SbBTx/dev-blog-update-on-anticheat-in-rainbow-six-siege',
+      date: '2021-02-03T05:00:00.000Z'
     }
   ]
 }

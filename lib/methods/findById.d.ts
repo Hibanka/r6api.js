@@ -1,5 +1,9 @@
 import { PlatformAllExtended, UUID } from '../typings';
-declare const _default: (platform: PlatformAllExtended, ids: UUID[] | string[]) => Promise<{
+export interface IOptions {
+    isUserId?: boolean;
+}
+export declare const optionsDocs: string[][];
+declare const _default: (platform: PlatformAllExtended, ids: UUID[] | string[], options?: IOptions | undefined) => Promise<{
     id: string;
     userId: string;
     idOnPlatform: string;

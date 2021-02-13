@@ -1,1 +1,1 @@
-{"version":3,"file":"fetch.d.ts","sourceRoot":"","sources":["../src/fetch.ts"],"names":[],"mappings":"AAAA,OAAkB,EAAE,WAAW,EAAY,MAAM,YAAY,CAAC;iCAuCtC,MAAM,WAAU,QAAQ,WAAW,CAAC;AAA5D,wBAmBoB"}
+{"version":3,"file":"fetch.d.ts","sourceRoot":"","sources":["../src/fetch.ts"],"names":[],"mappings":"iCAKwB,MAAM;AAA9B,wBAkCI"}

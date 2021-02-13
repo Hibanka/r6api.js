@@ -46,12 +46,14 @@ const getStatsBase = (platform: Platform) =>
 export const URLS = {
   LOGIN: () => `${getBaseVersion(3)}/profiles/sessions`,
   BYUSERNAME: (platform: PlatformAll, usernames: string[]) =>
-    getBaseVersion(2) +
-    `/profiles?nameOnPlatform=${usernames.join(',')}&platformType=${platform}`,
+    getBaseVersion(3) +
+    `/profiles?namesOnPlatform=${usernames.join(',')}&platformType=${platform}`,
   BYID: (platform: PlatformAll, ids: UUID[] | string[]) =>
-    `${getBaseVersion(2)}/profiles?idOnPlatform=${ids.join(',')}&platformType=${platform}`,
+    `${getBaseVersion(3)}/profiles?idsOnPlatform=${ids.join(',')}&platformType=${platform}`,
   BYUSERID: (ids: UUID[]) =>
-    `${getBaseVersion(2)}/profiles?userId=${ids.join(',')}`,
+    `${getBaseVersion(3)}/profiles?userIds=${ids.join(',')}`,
+  BYPROFILEID: (ids: UUID[]) =>
+    `${getBaseVersion(3)}/profiles?profileIds=${ids.join(',')}`,
   PROGRESS: (platform: Platform, ids: UUID[]) =>
     getStatsBase(platform) + '/r6playerprofile/playerprofile/progressions' +
     `?profile_ids=${ids.join(',')}`,
@@ -67,8 +69,8 @@ export const URLS = {
   STATS: (platform: Platform, ids: UUID[], stats: string) =>
     getStatsBase(platform) + '/playerstats2/statistics' +
     `?populations=${ids.join(',')}&statistics=${stats}`,
-  STATUS: () =>
-    `${STATUS_API_URL}/${API_VERSIONS.V1}/instances`,
+  STATUS: () => `${STATUS_API_URL}/${API_VERSIONS.V1}/instances`,
+  VALIDATEUSERNAME: (userId: UUID) => `${getBaseVersion(3)}/profiles/${userId}/validateUpdate`,
   NEWS: (
     category: string, filter: string,
     locale: string, fallbackLocale: string,

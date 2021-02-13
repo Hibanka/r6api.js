@@ -3,7 +3,7 @@ declare const _default: (platform: PlatformAll, username: string[]) => Promise<{
     id: string;
     userId: string;
     idOnPlatform: string;
-    platform: "uplay" | "psn" | "xbl" | "steam";
+    platform: "uplay" | "psn" | "xbl" | "steam" | "epic" | "amazon";
     username: string;
     avatar: {
         146: string;

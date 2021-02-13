@@ -20,7 +20,7 @@ export declare const SANDBOXES: {
     readonly xbl: "OSBOR_XBOXONE_LNCH_A";
 };
 export declare const PLATFORMS: readonly ["uplay", "psn", "xbl"];
-export declare const PLATFORMSALL: readonly ["uplay", "psn", "xbl", "steam"];
+export declare const PLATFORMSALL: readonly ["uplay", "psn", "xbl", "steam", "epic", "amazon"];
 export declare const REGIONS: {
     readonly emea: "Europe, Middle East and Africa";
     readonly ncsa: "North, Central and South America";
@@ -31,31 +31,31 @@ export declare const OLD_SEASONS: {
         readonly name: "Black Ice";
         readonly color: "#2e93b3";
         readonly image: "67sZXc4UuXK2YPq8uj0mgE/6d0a5e1c6a342f5219cba2fc89e0ba14/r6s-seasons-y1s1";
-        readonly releaseDate: Date;
+        readonly releaseDate: string;
     };
     readonly 2: {
         readonly name: "Dust Line";
         readonly color: "#d0a344";
         readonly image: "5u2ecpIe98X528KgYQiEt/5833e27e347176f5e041cc533d48ac95/r6s-seasons-y1s2";
-        readonly releaseDate: Date;
+        readonly releaseDate: string;
     };
     readonly 3: {
         readonly name: "Skull Rain";
         readonly color: "#47893b";
         readonly image: "2X0s4QopJikcMNN4qg9KPS/5ef0ae117679ee7b1342c776a77c9dd4/r6s-seasons-y1s3";
-        readonly releaseDate: Date;
+        readonly releaseDate: string;
     };
     readonly 4: {
         readonly name: "Red Crow";
         readonly color: "#bd1e2c";
         readonly image: "66IKfs4aSnSkxaToTmmVBt/1532ccea8dd02b3ea44f254e4fdac27f/r6s-seasons-y1s4";
-        readonly releaseDate: Date;
+        readonly releaseDate: string;
     };
     readonly 5: {
         readonly name: "Velvet Shell";
         readonly color: "#723093";
         readonly image: "5OKGWvBbiscdZNmjr0PP9q/f5cff0dae8546193f9601fcf703f7f0e/r6s-seasons-y2s1";
-        readonly releaseDate: Date;
+        readonly releaseDate: string;
     };
 };
 export declare const SEASONS: {
@@ -63,91 +63,91 @@ export declare const SEASONS: {
         readonly name: "Health";
         readonly color: "#0050b3";
         readonly image: "2w0kuPWW4vZS2MvHxpjgKL/527a78f482f03250f48ee05fabb843a9/r6s-seasons-y2s2";
-        readonly releaseDate: Date;
+        readonly releaseDate: string;
     };
     readonly 7: {
         readonly name: "Blood Orchid";
         readonly color: "#ca361c";
         readonly image: "5Is8lRiLLAaU0Uaj46Bu5Z/d46a8652cdf16426b7c9a0d634442be5/r6s-seasons-y2s3";
-        readonly releaseDate: Date;
+        readonly releaseDate: string;
     };
     readonly 8: {
         readonly name: "White Noise";
         readonly color: "#006543";
         readonly image: "6FvQKw65QzOqhVKxbjBg1Z/70ea9eb8865182504f74cfea10f88c0a/r6s-seasons-y2s4";
-        readonly releaseDate: Date;
+        readonly releaseDate: string;
     };
     readonly 9: {
         readonly name: "Chimera";
         readonly color: "#ffc113";
         readonly image: "35ZyIYUW7odr1tiGyGNd8R/8a578688e5c46ed779a382c940bf270b/rainbow6siege-chimera-thumb_318068";
-        readonly releaseDate: Date;
+        readonly releaseDate: string;
     };
     readonly 10: {
         readonly name: "Para Bellum";
         readonly color: "#949f39";
         readonly image: "522ZBrBzlJMoTi63hrwuna/3f9007ceaa80b8110fa282937309ac1e/rainbow6siege_parabellum_thumb_323480";
-        readonly releaseDate: Date;
+        readonly releaseDate: string;
     };
     readonly 11: {
         readonly name: "Grim Sky";
         readonly color: "#81a0c1";
         readonly image: "4y07zikRXB4BcyRQy5Anoe/2e6de56c3ea34cadb300326102963340/rainbow6siege_grimsky_thumb_333789";
-        readonly releaseDate: Date;
+        readonly releaseDate: string;
     };
     readonly 12: {
         readonly name: "Wind Bastion";
         readonly color: "#aa854f";
         readonly image: "1VeuGBLdSsadK5MdLfCL9k/b9e213c4aeb8dfe6e1f137968770912a/rainbow6siege_windbastion_thumb_340468";
-        readonly releaseDate: Date;
+        readonly releaseDate: string;
     };
     readonly 13: {
         readonly name: "Burnt Horizon";
         readonly color: "#d2005a";
         readonly image: "4J2E0yJ2cZsKgx5OrFGkvR/0f966f31b3d8ad2ef13926b075769334/r6s-seasons-y4s1";
-        readonly releaseDate: Date;
+        readonly releaseDate: string;
     };
     readonly 14: {
         readonly name: "Phantom Sight";
         readonly color: "#304395";
         readonly image: "29ze1Zxf173boRuyaFHuQV/c240df821c3ec407b09118c68a1300c0/r6s-seasons-y4s2";
-        readonly releaseDate: Date;
+        readonly releaseDate: string;
     };
     readonly 15: {
         readonly name: "Ember Rise";
         readonly color: "#156309";
         readonly image: "1JeHAGdUglVNSUUvSkxSia/1c8b76a4256091ca40434e89addaacf2/r6s-seasons-y4s3";
-        readonly releaseDate: Date;
+        readonly releaseDate: string;
     };
     readonly 16: {
         readonly name: "Shifting Tides";
         readonly color: "#089eb3";
         readonly image: "6uZSbKGZiwF7Zv5egr4zks/5597030f075ad99c0a18a1dcea34ef87/r6s-seasons-y4s4";
-        readonly releaseDate: Date;
+        readonly releaseDate: string;
     };
     readonly 17: {
         readonly name: "Void Edge";
         readonly color: "#946a97";
         readonly image: "2584xuwMoCH1FJc9n34jLo/9dfec73fd217a889a7bfe66e1f412cd6/r6s-seasons-y5s1";
-        readonly releaseDate: Date;
+        readonly releaseDate: string;
     };
     readonly 18: {
         readonly name: "Steel Wave";
         readonly color: "#2b7f9b";
         readonly image: "4soZ80QzL9WoLqvq8Hz647/d8d70312ec2849c276b459c3ef0482cd/r6s-seasons-y5s2";
-        readonly releaseDate: Date;
+        readonly releaseDate: string;
     };
     readonly 19: {
         readonly name: "Shadow Legacy";
         readonly color: "#6ca511";
         readonly image: "5H87SAzADrzRmroVnJzuUE/2e73c489074b538055df0f793b4e1639/r6s-seasons-y5s3";
-        readonly releaseDate: Date;
+        readonly releaseDate: string;
     };
     readonly 20: {
         readonly name: "Neon Dawn";
         readonly color: "#D14007";
         readonly image: "3vRTyOgSmwcUVxiOk60p3w/e2f41521df1f67704dae051d147a32cc/r6s-seasons-y5s4";
-        readonly releaseDate: Date;
+        readonly releaseDate: string;
     };
 };
 export declare const RANKS: {

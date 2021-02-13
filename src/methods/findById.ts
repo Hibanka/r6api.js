@@ -14,11 +14,26 @@ interface IApiResponse {
   profiles: IProfile[];
 }
 
-export default (platform: PlatformAllExtended, ids: UUID[] | string[]) =>
-  getToken()
+export interface IOptions {
+  isUserId?: boolean;
+}
+
+export const optionsDocs = [
+  [
+    'isUserId', '`boolean`', 'false', '`false`', 'Whether `id` is `userId` or not'
+  ]
+];
+
+export default (platform: PlatformAllExtended, ids: UUID[] | string[], options?: IOptions) => {
+
+  const isUserId = options && options.isUserId;
+
+  return getToken()
     .then(
       platform === 'all'
-        ? fetch<IApiResponse>(URLS.BYUSERID(ids))
+        ? isUserId
+          ? fetch<IApiResponse>(URLS.BYUSERID(ids))
+          : fetch<IApiResponse>(URLS.BYPROFILEID(ids))
         : fetch<IApiResponse>(URLS.BYID(platform, ids))
     )
     .then(res =>
@@ -32,3 +47,5 @@ export default (platform: PlatformAllExtended, ids: UUID[] | string[]) =>
           avatar: getAvatars(profile.userId)
         }))
     );
+
+};

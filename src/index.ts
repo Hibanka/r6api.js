@@ -1,16 +1,17 @@
 import {
   setTokenFileLocation as _setTokenFileLocation,
   setCredentials as _setCredentials,
-  getToken as _getToken,
-  parseToken as _parseToken
+  getAuth as _getAuth,
+  getToken as _getToken
 } from './auth';
 import _findByUsername from './methods/findByUsername';
-import _findById from './methods/findById';
+import _findById, { IOptions as IFindByIdOptions} from './methods/findById';
 import _getProgression from './methods/getProgression';
 import _getPlaytime from './methods/getPlaytime';
 import _getRanks, { IOptions as IGetRanksOptions } from './methods/getRanks';
 import _getStats, { IOptions as IGetStatsOptions } from './methods/getStats';
 import _getStatus from './methods/getStatus';
+import _validateUsername from './methods/validateUsername';
 import _custom from './methods/custom';
 import _getNews from './methods/getNews';
 import _getNewsById from './methods/getNewsById';
@@ -49,8 +50,10 @@ export default class R6API {
   findByUsername = (platform: PlatformAll, query: QueryString) =>
     checkQueryLimit({ method: _findByUsername, platform, query, limit: 50 });
 
-  findById = (platform: PlatformAllExtended, query: QueryUUID | QueryString) =>
-    checkQueryLimit({ method: _findById, platform, query, limit: 50 })
+  findById = (
+    platform: PlatformAllExtended, query: QueryUUID | QueryString, options?: IFindByIdOptions
+  ) =>
+    checkQueryLimit({ method: _findById, platform, query, options, limit: 50 })
 
   getPlaytime = (platform: Platform, query: QueryUUID) =>
     checkQueryLimit({ method: _getPlaytime, platform, query, limit: 200 })
@@ -65,12 +68,13 @@ export default class R6API {
     checkQueryLimit({ method: _getStats, platform, query, options, limit: 200 })
 
   getStatus = _getStatus
+  validateUsername = _validateUsername
   custom = _custom
   getNews = _getNews
   getNewsById = _getNewsById
 
+  getAuth = _getAuth
   getToken = _getToken
-  parseToken = _parseToken
   setCredentials = _setCredentials
   setTokenFileLocation = _setTokenFileLocation
 

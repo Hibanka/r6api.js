@@ -14,38 +14,38 @@
           "emea": {
             "id": "emea",
             "name": "Europe, Middle East and Africa",
-            "skillMean": 30.8867056323,
-            "skillStdev": 7.6002159074,
+            "skillMean": 31.0012849098,
+            "skillStdev": 6.2625554853,
             "current": {
-              "id": 0,
-              "name": "Unranked",
-              "mmr": 3089,
-              "icon": "https://github.com/danielwerg/r6api.js/raw/typescript/assets/ranks/v3/Unranked.png"
+              "id": 18,
+              "name": "Gold 1",
+              "mmr": 3100,
+              "icon": "https://github.com/danielwerg/r6api.js/raw/typescript/assets/ranks/v3/Gold%201.png"
             },
             "max": {
-              "id": 0,
-              "name": "Unranked",
-              "mmr": 0,
-              "icon": "https://github.com/danielwerg/r6api.js/raw/typescript/assets/ranks/v3/Unranked.png"
+              "id": 19,
+              "name": "Platinum 3",
+              "mmr": 3396,
+              "icon": "https://github.com/danielwerg/r6api.js/raw/typescript/assets/ranks/v3.1/Platinum%203.png"
             },
             "lastMatch": {
-              "result": "unknown",
-              "mmrChange": 0,
-              "skillMeanChange": 0,
-              "skillStdevChange": 0
+              "result": "loss",
+              "mmrChange": -65,
+              "skillMeanChange": -0.6529273971,
+              "skillStdevChange": -0.0395949962
             },
-            "previousMmr": 0,
-            "nextMmr": 0,
+            "previousMmr": 3000,
+            "nextMmr": 3200,
             "topRankPosition": 0,
-            "kills": 0,
-            "deaths": 0,
-            "kd": 0,
-            "wins": 0,
-            "losses": 0,
-            "winRate": "0.00%",
-            "matches": 0,
+            "kills": 123,
+            "deaths": 114,
+            "kd": 1.08,
+            "wins": 12,
+            "losses": 13,
+            "winRate": "48.00%",
+            "matches": 25,
             "abandons": 0,
-            "updateTime": "1970-01-01T00:00:00+00:00"
+            "updateTime": "2020-12-28T16:30:07.288000+00:00"
           }
         }
       }
