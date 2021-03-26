@@ -149,6 +149,12 @@ export declare const SEASONS: {
         readonly image: "3vRTyOgSmwcUVxiOk60p3w/e2f41521df1f67704dae051d147a32cc/r6s-seasons-y5s4";
         readonly releaseDate: string;
     };
+    readonly 21: {
+        readonly name: "Crimson Heist";
+        readonly color: "#AC0000";
+        readonly imageId: "7iKoGngda7z0LyYpTT25zM/116efeb1c65cb9a356a3e9a42abe2ae3/R6_live_Y6S1_CrimsonHeist";
+        readonly releaseDate: string;
+    };
 };
 export declare const RANKS: {
     readonly 23: "Champions";
@@ -1041,6 +1047,20 @@ export declare const OPERATORS: {
         uniqueAbility: {
             name: string;
             icon: string;
+            stats: {
+                name: string;
+                id: string;
+            }[];
+        };
+    };
+    flores: {
+        name: string;
+        id: string;
+        role: string;
+        unit: string;
+        uniqueAbility: {
+            name: string;
+            iconId: string;
             stats: {
                 name: string;
                 id: string;
