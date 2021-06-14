@@ -77,7 +77,7 @@ declare const _default: (options?: IOptions | undefined) => Promise<{
         url: string;
         date: string;
     }[];
-    raw?: IApiResponse;
+    raw?: IApiResponse | undefined;
 }>;
 export default _default;
 //# sourceMappingURL=getNews.d.ts.map

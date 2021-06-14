@@ -158,6 +158,12 @@ export const SEASONS = <const>{
     color: '#AC0000',
     imageId: '7iKoGngda7z0LyYpTT25zM/116efeb1c65cb9a356a3e9a42abe2ae3/R6_live_Y6S1_CrimsonHeist',
     releaseDate: new Date('2021-03-16').toISOString()
+  },
+  22: {
+    name: 'North Star',
+    color: '#009cbe',
+    imageId: '38Lml8ltnO932wLqhC5xEA/493665084f757da8c91c01a0b99d2be3/r6s-seasons-y6s2',
+    releaseDate: new Date('2021-06-14').toISOString()
   }
 };
 
@@ -999,6 +1005,19 @@ export const OPERATORS = {
       iconId: '1z7eSI5D8IRIOHi0PJu4yq/3c4a273098a840957a248583f73fa8ff/r6s-operator-ability-flores',
       stats: [
         { name: 'Gadgets Destroyed with RCE', id: 'flores_gadgetdestroywithrceratero' }
+      ]
+    }
+  },
+  'thunderbird': {
+    name: 'Thunderbird',
+    id: '',
+    role: 'defender',
+    unit: 'Unaffiliated',
+    uniqueAbility: {
+      name: 'KÓNA Station',
+      iconId: '67J9QnmuA4TMI3rBxoA3Jz/4ec42d8c1bb61dadc5f36893f93142e8/r6s-operator-ability-thunderbird',
+      stats: [
+        { name: '...', id: 'thunderbird_' }
       ]
     }
   }

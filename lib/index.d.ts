@@ -113,7 +113,7 @@ export default class R6API {
             url: string;
             date: string;
         }[];
-        raw?: import("./methods/getNews").IApiResponse;
+        raw?: import("./methods/getNews").IApiResponse | undefined;
     }>;
     getNewsById: (id: string, options?: import("./methods/getNewsById").IOptions | undefined) => Promise<{
         item?: {
@@ -133,7 +133,7 @@ export default class R6API {
             readTime: string | undefined;
             url: string;
             date: string;
-        };
+        } | undefined;
         total: number;
         limit: number;
         categories: string;
@@ -142,7 +142,7 @@ export default class R6API {
         startIndex: string | number;
         placement: string;
         tags: string;
-        raw?: import("./methods/getNewsById").IApiResponse;
+        raw?: import("./methods/getNewsById").IApiResponse | undefined;
     }>;
     getAuth: () => Promise<import("./auth").IUbiAuth>;
     getToken: () => Promise<string>;

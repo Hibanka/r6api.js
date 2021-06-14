@@ -155,6 +155,12 @@ export declare const SEASONS: {
         readonly imageId: "7iKoGngda7z0LyYpTT25zM/116efeb1c65cb9a356a3e9a42abe2ae3/R6_live_Y6S1_CrimsonHeist";
         readonly releaseDate: string;
     };
+    readonly 22: {
+        readonly name: "North Star";
+        readonly color: "#009cbe";
+        readonly imageId: "38Lml8ltnO932wLqhC5xEA/493665084f757da8c91c01a0b99d2be3/r6s-seasons-y6s2";
+        readonly releaseDate: string;
+    };
 };
 export declare const RANKS: {
     readonly 23: "Champions";
@@ -1054,6 +1060,20 @@ export declare const OPERATORS: {
         };
     };
     flores: {
+        name: string;
+        id: string;
+        role: string;
+        unit: string;
+        uniqueAbility: {
+            name: string;
+            iconId: string;
+            stats: {
+                name: string;
+                id: string;
+            }[];
+        };
+    };
+    thunderbird: {
         name: string;
         id: string;
         role: string;

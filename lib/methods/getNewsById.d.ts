@@ -78,7 +78,7 @@ declare const _default: (id: string, options?: IOptions | undefined) => Promise<
         readTime: string | undefined;
         url: string;
         date: string;
-    };
+    } | undefined;
     total: number;
     limit: number;
     categories: string;
@@ -87,7 +87,7 @@ declare const _default: (id: string, options?: IOptions | undefined) => Promise<
     startIndex: string | number;
     placement: string;
     tags: string;
-    raw?: IApiResponse;
+    raw?: IApiResponse | undefined;
 }>;
 export default _default;
 //# sourceMappingURL=getNewsById.d.ts.map
